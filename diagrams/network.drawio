@@ -1,0 +1,161 @@
+<mxfile host="65bd71144e">
+    <diagram id="dSapMderQFHcbK7-m7O6" name="Page-1">
+        <mxGraphModel dx="2149" dy="454" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="35" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="650" width="540" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="649" width="380" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="4" target="9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="LAN1 (VLANs, Trunk)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="15" vertex="1" connectable="0">
+                    <mxGeometry x="0.152" relative="1" as="geometry">
+                        <mxPoint y="11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="Netgate 4100&lt;br&gt;Pfsense+" style="image;html=1;image=img/lib/clip_art/networking/Firewall-page1_128x128.png" parent="1" vertex="1">
+                    <mxGeometry x="385" y="270" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="edgeStyle=none;html=1;" parent="1" source="5" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Pass through" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="6" vertex="1" connectable="0">
+                    <mxGeometry x="0.2463" y="1" relative="1" as="geometry">
+                        <mxPoint x="-1" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="AT&amp;amp;T BGW210&lt;br&gt;Modem" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.modem;" parent="1" vertex="1">
+                    <mxGeometry x="375" y="140" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="9" target="18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=none;html=1;entryX=0.566;entryY=0.003;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" parent="1" source="9" target="26" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="9" target="35" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="TL-SG1024DE" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png" parent="1" vertex="1">
+                    <mxGeometry x="385.5" y="470" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=none;html=1;" parent="1" source="12" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="WAN" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="13" vertex="1" connectable="0">
+                    <mxGeometry x="-0.3064" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.internet_2;fillColor=#D2D3D3;gradientColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="385.5" y="20" width="79.5" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="-210" y="649" width="400" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="VLAN10 (2,11)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#006EAF;fillColor=#1ba1e2;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="-210" y="630" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="IP Address 10.10.1.1/24" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="-210" y="836" width="140" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="DHCP Pool 10.10.1.100 - 10.10.1.150" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="-210" y="849" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&lt;b&gt;Servers&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="-210" y="660" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="IP Address 172.16.1.0/24" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="836" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="DHCP Pool 172.16.1.10&amp;nbsp;- 172.16.1.100" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="849" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="&lt;b&gt;Untrusted&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="660" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="VLAN20 (22,21)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="630" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" style="edgeStyle=none;html=1;entryX=0.562;entryY=-0.013;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" parent="1" source="31" target="26" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="Switch port&amp;nbsp;22" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;" parent="42" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2513" relative="1" as="geometry">
+                        <mxPoint x="-48" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="Samsung 52&quot;" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.tv;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="750" width="44" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" style="edgeStyle=none;html=1;entryX=0.571;entryY=-0.018;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" parent="1" source="32" target="26" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="Switch port 21" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;" parent="40" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2224" relative="1" as="geometry">
+                        <mxPoint x="47" y="2" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="HP Laserjet Pro&lt;br&gt;M118dw" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.printer;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="748" width="30" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="VLAN30 (23)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#432D57;fillColor=#76608a;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="630" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="IP Address 192.168.30.1/24" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="836" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="DHCP Pool 192.168.30.10&amp;nbsp;- 192.168.30.100" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="849" width="250" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="&lt;b&gt;Access Point&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="660" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="TL Access Point" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image;image=img/lib/allied_telesis/wireless/Access_Point_Indoor.svg;labelBackgroundColor=none;strokeColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="870" y="649" width="33.52" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="5071" style="image;html=1;image=img/lib/clip_art/telecommunication/iPhone_128x128.png;labelBackgroundColor=none;strokeColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="750" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="MacbookAir" style="verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;align=center;outlineConnect=0;shape=mxgraph.citrix.laptop_2;labelBackgroundColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="738" width="67.05" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="MBP" style="verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;align=center;outlineConnect=0;shape=mxgraph.citrix.laptop_2;labelBackgroundColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="982.95" y="738" width="67.05" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="ThinkPad" style="verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;align=center;outlineConnect=0;shape=mxgraph.citrix.laptop_2;labelBackgroundColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="915.9" y="738" width="67.05" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="5080" style="image;html=1;image=img/lib/clip_art/telecommunication/iPhone_128x128.png;labelBackgroundColor=none;strokeColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="690" y="750" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="iPad Air" style="image;html=1;image=img/lib/clip_art/computers/iPad_128x128.png;labelBackgroundColor=none;strokeColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="740" y="740" width="30" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="iPad 4Gen" style="image;html=1;image=img/lib/clip_art/computers/iPad_128x128.png;labelBackgroundColor=none;strokeColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="740" width="30" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="Proxmox Prod" style="aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;fontSize=12;verticalAlign=top;fontColor=#364149;shadow=0;dashed=0;image;image=img/lib/cumulus/server_bare_metal.svg;labelBackgroundColor=none;strokeColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="-200" y="700" width="96" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="&lt;font color=&quot;#4d4d4d&quot;&gt;NAS&lt;/font&gt;" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=#314354;fillColor=#647687;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam2.nas_backup;labelBackgroundColor=none;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="-65" y="686" width="60" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="&lt;font color=&quot;#4d4d4d&quot;&gt;K8s&lt;/font&gt;" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=#314354;fillColor=#647687;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.cluster;labelBackgroundColor=none;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="685.4" width="102.8" height="49.2" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="" style="html=1;strokeWidth=1;shadow=0;dashed=0;shape=mxgraph.ios7.misc.wifi;fillColor=#B266FF;strokeColor=none;buttonText=;strokeColor2=#222222;fontColor=#222222;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;align=center;sketch=0;labelBackgroundColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="1116.05" y="653" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="Proxmox Prod" style="aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;fontSize=12;verticalAlign=top;fontColor=#364149;shadow=0;dashed=0;image;image=img/lib/cumulus/server_bare_metal.svg;labelBackgroundColor=none;strokeColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="-200" y="748" width="96" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

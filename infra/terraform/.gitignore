@@ -1,0 +1,5 @@
+*tfstate
+proxmox_api.auto.tfvars
+.terraform*
+terraform*
+.pem

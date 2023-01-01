@@ -1,0 +1,19 @@
+# IDEs/Text Editors
+.idea/
+.vscode/
+
+# Terraform files
+.terraform/*
+**/.terraform*
+*.tfstate
+*.tfstate.*
+*.tfplan
+terraform.tfstate
+*.plan
+
+# misc
+*.cer
+*.crt
+*.key
+*.pem
+

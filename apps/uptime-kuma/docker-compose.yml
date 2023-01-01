@@ -1,0 +1,15 @@
+# Simple docker-composer.yml
+# You can change your port or volume location
+
+version: '3.3'
+volumes:
+  uptime-kuma:
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    volumes:
+      - /data/planka/uptime-kuma:/app/data
+    ports:
+      - 3543:3001
+    restart: unless-stopped
