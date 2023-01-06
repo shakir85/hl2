@@ -1,9 +1,9 @@
 ## Intro
-This file is a practical manifest that describes the conventions and concepts I follow to build and maintain my homelab infrastructure and applications.
+This document describes the conventions and concepts I follow to build and maintain my homelab.
  
 Projects in this repository are practical solo DevOps projects built from scratch to help me learn by figuring out and troubleshooting things myself. 
 
-Nothing in this repository necessarily reflects my workstyle or understanding of the enterprise-level IT environment (i.e., how I do things in my daily job). Hence the objective of a homelab is to experiment, break things, have fun and learn.
+Nothing in this repository necessarily reflects my workstyle or understanding of enterprise-level IT (i.e., how I do things in my daily job). The goal of building a homelab is to experiment, break things, have fun and learn.
 
 ## Infrastructure
 The concepts followed are:
