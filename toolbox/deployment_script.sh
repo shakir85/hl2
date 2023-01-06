@@ -5,7 +5,7 @@
 #   docker-compose down --rmi all
 #   docker-compuse up -d --build
 
-for directory in ${HOME}/applications/*; do
+for directory in ${HOME}/apps/*; do
         if [ -d "$directory" ]; then
                 echo "Going to directory: $directory ..."
                 cd $directory
