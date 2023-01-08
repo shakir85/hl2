@@ -1,10 +1,12 @@
-# ---------------------------------------
+# Variables needed to authentiate with Proxmoox
 variable "proxmox_api_url" {
-  type = string
+  type        = string
+  description = "Example: https://yourproxmox.com:8006/api2/json"
 }
 
 variable "proxmox_api_token_id" {
-  type = string
+  type        = string
+  description = "In this format: <Username>@<Realm>!<TokenId>"
 }
 
 variable "proxmox_api_token_secret" {
