@@ -31,6 +31,6 @@ variable "pxmx_storage" {
 }
 
 variable "container_template" {
-  type = string
+  type        = string
   description = "Copy & paste a lxc template: \n\tubuntu-20.04-standard_20.04-1_amd64.tar.gz\n\tcentos-7-default_20190926_amd64.tar.xz"
 }
