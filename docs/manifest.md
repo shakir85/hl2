@@ -1,10 +1,3 @@
-## Intro
-This document describes the conventions and concepts I follow to build and maintain my homelab.
- 
-Projects in this repository are practical solo DevOps projects built from scratch to help me learn by figuring out and troubleshooting things myself. 
-
-Nothing in this repository necessarily reflects my workstyle or understanding of enterprise-level IT (i.e., how I do things in my daily job). The goal of building a homelab is to experiment, break things, have fun and learn.
-
 ## Infrastructure
 The concepts followed are:
 - Infrastructure should be cattle-not-pets.
@@ -13,7 +6,7 @@ The concepts followed are:
 
 Conventions:
 - Follow tools' naming and styling conventions. 
-- For other assets naming, follow [RFC1123](https://www.rfc-editor.org/rfc/rfc1123#page-13), in summary:
+- For other assets, follow [RFC1123](https://www.rfc-editor.org/rfc/rfc1123#page-13), in summary:
     - A resource name should not exceed 63 characters.
     - Contain only lowercase alphanumeric characters or '-'.
     - Start and end with alpha-numeric characters.
