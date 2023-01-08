@@ -1,10 +1,10 @@
 terraform {
 
-  backend "s3" {
-    bucket = "pxmx-hm-tf-state"
-    key    = "pxmx-tf-state-vms"
-    region = "us-east-1"
-  }
+  # backend "s3" {
+  #   bucket = "pxmx-hm-tf-state"
+  #   key    = "pxmx-tf-state-vms"
+  #   region = "us-east-1"
+  # }
 
   required_providers {
     proxmox = {
