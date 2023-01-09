@@ -1,2 +1,7 @@
 ---
-# tasks file for commons
+- name: Common Packages & Configs
+  apt: 
+    name: "{{ packages }}"
+    update_cache: yes
+    state: latest
+    force_apt_get: yes

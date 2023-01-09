@@ -1,0 +1,13 @@
+---
+- hosts: server1
+  become: yes
+  vars_files:
+    - roles/commons/vars/main.yml
+
+  tasks:  
+    - include_tasks: roles/commons/tasks/main.yml
+
+    - name: Rebooting...
+      shell: "sleep 5 && reboot"
+      async: 1
+      poll: 0
