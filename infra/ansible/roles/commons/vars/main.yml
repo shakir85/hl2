@@ -1,2 +1,8 @@
 ---
 # vars file for commons
+#
+default_user: "shakir"
+# Install common packages
+packages: [ 'zip', 'rsync', 'python3-pip' , 'python3-virtualenv', 'ca-certificates', 
+            'apt-transport-https', 'gnupg', 'lsb-release', 'htop', 
+            'curl', 'vim', 'figlet', git ]
