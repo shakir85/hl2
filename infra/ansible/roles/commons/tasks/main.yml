@@ -5,3 +5,15 @@
     update_cache: yes
     state: latest
     force_apt_get: yes
+
+- name: Backup default '.bashrc' file
+  command: mv /home/{{ default_user }}/.bashrc /home/{{ default_user }}/.default_bashrc_backup
+
+- name: Copy enhanced .bashrc file to /home/{{ default_user }}/
+  ansible.builtin.copy:
+    src: ../files/.bashrc
+    dest: /home/{{ default_user }}/
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+    mode: '0644'
+    # force: yes
