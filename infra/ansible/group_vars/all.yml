@@ -1,2 +1,5 @@
 ---
+# This is a global user configured in Proxmox cloud-init debian image.
+# The user will be activated when Terraform provisions a VM using that 
+# cloud-init template.
 default_user: shakir
