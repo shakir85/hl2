@@ -1,2 +1,6 @@
 ---
 # vars file for docker
+compose_version: 2.15.1
+docker_ce_version: 5:20.10.22~3-0~debian-bullseye
+docker_ce_cli_version: 5:20.10.22~3-0~debian-bullseye
+containerd_version: 1.6.15-1
