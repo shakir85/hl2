@@ -1,74 +1,54 @@
 ---
+- name: Add Docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+- name: Save Debian release version into a variable
+  shell: "lsb_release -cs"
+  register: os_version
+
+- name: Add Docker apt repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{ os_version.stdout }} stable"
+    state: present
+
 - name: Install Docker
-  hosts: all 
-  vars:
-    DOCKER_COMPOSE_VERSION: "2.6.1"
-    USER: "shakir"
-    DOCKER_PACKAGES:
-    - ca-certificates
-    - curl
-    - gnupg
-    - lsb-release
-    
-  become: yes
-  tasks:
-    - name: Install essential packages
-      apt: 
-        name: "{{ DOCKER_PACKAGES }}" 
-        state: present 
-        update_cache: yes
-        force_apt_get: yes
-    
-    - name: Add Docker GPG key
-      apt_key: 
-        url: "https://download.docker.com/linux/ubuntu/gpg" 
-        state: present
-    
-    - name: Save Ubuntu release version into a variable
-      shell: "lsb_release -cs"
-      register: os_version
-    
-    - name: Add Docker apt repository
-      apt_repository:
-        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ os_version.stdout }} stable"
-        state: present
-    
-    - name: Install Docker
-      apt: 
-        state: present 
-        update_cache: yes 
-        force_apt_get: yes
-        name: 
-          - docker-ce
-          - docker-ce-cli 
-          - containerd.io
+  apt: 
+    state: present 
+    update_cache: yes 
+    force_apt_get: yes
+    name: 
+      - docker-ce={{ docker_ce_version }}
+      - docker-ce-cli={{ docker_ce_cli_version }}
+      - containerd.io={{ containerd_version }}
 
-    
-    # 'state: present' -> if group exist = pass; otherwise create it. 
-    - name: Create Docker Group
-      group:
-        name: "docker"
-        state: present
-    
-    - name: Add user {{ USER }} to docker group
-      user:
-        name: "{{ USER }}"
-        groups: "docker"
-        append: yes
-    
-    - name: Ensure docker service is running
-      systemd: 
-        name: docker 
-        state: started 
-        enabled: yes   
+# 'state: present' -> if group exist = pass; otherwise create it. 
+- name: Create Docker Group
+  group:
+    name: docker
+    state: present
 
-    - name: Install Docker Compose
-      get_url:
-        url:  "https://github.com/docker/compose/releases/download/{{ DOCKER_COMPOSE_VERSION }}/docker-compose-Linux-x86_64"
-        dest: "/usr/local/bin/docker-compose"
-        mode: 0755
+- name: Add user '{{ default_user }}' to docker group
+  user:
+    name: "{{ default_user }}"
+    groups: "docker"
+    append: yes
 
-    - name: Reboot
-      shell: "sleep 5 && reboot"
-      async: 1
-      poll: 0
+- name: Ensure docker service is running
+  systemd: 
+    name: docker 
+    state: started 
+    enabled: yes   
+
+- name: Install Docker Compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-aarch64
+    dest: /usr/local/bin/docker-compose
+    checksum: sha256:14d31297794868520cb2e61b543bb1c821aaa484af22b397904314ae8227f6a2
+    mode: 0755
+
+- name: Reboot
+  shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
