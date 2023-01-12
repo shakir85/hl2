@@ -1,0 +1,9 @@
+name: PR sanitization
+run-name: ${{ github.actor }} is working on this 🚀
+on: [push]
+jobs:
+  clean-up:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete merged branch
+        uses: SvanBoxel/delete-merged-branch@1.4.2
