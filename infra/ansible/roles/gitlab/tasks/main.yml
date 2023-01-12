@@ -1,0 +1,48 @@
+---
+# tasks file for gitlab
+- name: Downloading Gitlab Runner
+  get_url:
+    url: "{{ gitlab_deb_pkg_url }}"
+    dest: /tmp/
+    checksum: sha256:58c84fd199447ba0fb12db333e6251c5deee51d3e201c733a9ba8ec8039f1c33
+    mode: 0755
+
+- name: Installing Gitlab Runner
+  apt:
+    deb: /tmp/{{ gitlab_deb_pkg_name }}
+
+- name: Deleting Gitlab Runner dep package
+  file:
+    path: /tmp/{{ gitlab_deb_pkg_name }}
+    state: absent
+
+- name: Adding user 'gitlab-runner' to docker group
+  user:
+    name: gitlab-runner
+    groups: docker
+    append: yes
+
+- name: Ensure gitlab-runner is running
+  systemd:
+    name: gitlab-runner
+    state: started
+    enabled: yes
+# -----------------
+# IMPORTANT:
+# See this Gitlab deprications:
+# - registration-tokens & gitlab-runner register command:
+#     https://gitlab.com/gitlab-org/gitlab/-/issues/380872
+# -----------------
+
+# - name: Registering Gitlab Runner (system-mode)
+#   shell: |
+#           gitlab-runner register \
+#           --description "{{ runner_description }}" \
+#           --non-interactive \
+#           --run-untagged="false" \
+#           --locked="false" \
+#           --access-level="not_protected" \
+#           --url "{{ lookup('ansible.builtin.env', 'CI_SERVER_URL') }}" \
+#           --registration-token "{{ lookup('ansible.builtin.env', 'CITOKEN') }}" \
+#           --executor shell \
+#           --tag-list="hostname1,hostname2" \
