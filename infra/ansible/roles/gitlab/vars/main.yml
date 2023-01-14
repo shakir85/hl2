@@ -4,4 +4,7 @@ gitlab_deb_pkg_url: https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/
 gitlab_deb_pkg_name: "{{ gitlab_deb_pkg_url.split('/')[-1] }}"
 runner_description: "{{ ansible_date_time.date }}"
 # Number of runners to register per host
-list_of_runners: ["runner1", "runner2"]
+list_of_runners: ["runner1"]
+# Export these vars first
+reg_tk: "{{ lookup('env', 'CI_TOKEN') }}"
+ci_url: "{{ lookup('env', 'CI_SERVER_URL') }}"

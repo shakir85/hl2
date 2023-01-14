@@ -7,6 +7,8 @@
 # -----------------
 
 - name: Registering Gitlab Runner (system-mode)
+  when: reg_tk | default('', true) | trim != ''
+  register: create
   loop: "{{ list_of_runners }}"
   # --tag-list -> comma separated tags
   shell: |
@@ -17,6 +19,13 @@
     --locked="false" \
     --access-level="not_protected" \
     --url "https://gitlab.com" \
-    --registration-token "" \
+    --registration-token "{{ reg_tk }}" \
     --executor shell \
     --tag-list="{{ inventory_hostname }}" \
+
+- name: print msg
+  when: create.changed == false
+  debug:
+    msg:
+      - => Registration token variable 'CI_TOKEN' is not set. No runner was registered.
+      - => export CI_TOKEN=<yourToken> before running this role.
