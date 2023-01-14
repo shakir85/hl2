@@ -27,22 +27,3 @@
     name: gitlab-runner
     state: started
     enabled: yes
-# -----------------
-# IMPORTANT:
-# See this Gitlab deprications:
-# - registration-tokens & gitlab-runner register command:
-#     https://gitlab.com/gitlab-org/gitlab/-/issues/380872
-# -----------------
-
-# - name: Registering Gitlab Runner (system-mode)
-#   shell: |
-#           gitlab-runner register \
-#           --description "{{ runner_description }}" \
-#           --non-interactive \
-#           --run-untagged="false" \
-#           --locked="false" \
-#           --access-level="not_protected" \
-#           --url "{{ lookup('ansible.builtin.env', 'CI_SERVER_URL') }}" \
-#           --registration-token "{{ lookup('ansible.builtin.env', 'CITOKEN') }}" \
-#           --executor shell \
-#           --tag-list="hostname1,hostname2" \

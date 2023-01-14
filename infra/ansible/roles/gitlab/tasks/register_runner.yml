@@ -1,0 +1,22 @@
+---
+# -----------------
+# IMPORTANT:
+# See this Gitlab deprications:
+# - registration-tokens & gitlab-runner register command:
+#     https://gitlab.com/gitlab-org/gitlab/-/issues/380872
+# -----------------
+
+- name: Registering Gitlab Runner (system-mode)
+  loop: "{{ list_of_runners }}"
+  # --tag-list -> comma separated tags
+  shell: |
+    gitlab-runner register \
+    --description "provisioned by Ansible in {{ runner_description }} @ {{ inventory_hostname }}" \
+    --non-interactive \
+    --run-untagged="false" \
+    --locked="false" \
+    --access-level="not_protected" \
+    --url "https://gitlab.com" \
+    --registration-token "" \
+    --executor shell \
+    --tag-list="{{ inventory_hostname }}" \

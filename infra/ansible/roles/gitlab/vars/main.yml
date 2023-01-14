@@ -2,3 +2,6 @@
 # vars file for gitlab
 gitlab_deb_pkg_url: https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb
 gitlab_deb_pkg_name: "{{ gitlab_deb_pkg_url.split('/')[-1] }}"
+runner_description: "{{ ansible_date_time.date }}"
+# Number of runners to register per host
+list_of_runners: ["runner1", "runner2"]
