@@ -1,0 +1,41 @@
+---
+# tasks file for nfs
+
+- name: Install NFS utils for Debian servers
+  when: ansible_os_family == 'Debian'
+  ansible.builtin.apt:
+    name:
+      - nfs4-acl-tools
+      - nfs-common
+    state: present
+
+- name: Install NFS utils for CentOS servers
+  when: ansible_os_family == 'RedHat'
+  ansible.builtin.yum:
+    name:
+      - nfs4-acl-tools
+      - nfs-utils
+    state: present
+
+- name: Ensure NFS client service is running
+  systemd:
+    name: nfs-client.target
+    state: started
+    enabled: yes
+
+# TODO: review file permission assignment
+- name: Checking mounting point
+  ansible.builtin.file:
+    path: "{{ mount_point }}"
+    state: directory
+    mode: "{{ permission }}"
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+
+- name: Mounting NFS
+  ansible.posix.mount:
+    src: "{{ nfs_source }}"
+    path: "{{ mount_point }}"
+    fstype: nfs
+    opts: "{{ file_options }}"
+    state: mounted

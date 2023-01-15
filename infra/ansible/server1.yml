@@ -3,6 +3,7 @@
   become: yes
   vars_files:
     - group_vars/all.yml
+    - roles/nfs/vars/main.yml
     - roles/commons/vars/main.yml
     - roles/docker/vars/main.yml
     - roles/gitlab/vars/main.yml
@@ -17,6 +18,8 @@
         file: roles/gitlab/tasks/main.yml
     - ansible.builtin.include_tasks:
         file: roles/gitlab/tasks/register_runner.yml
+    - ansible.builtin.include_tasks:
+          file: roles/nfs/tasks/main.yml
 
     # - name: Rebooting...
     #   shell: "sleep 5 && reboot"
