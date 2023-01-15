@@ -1,12 +1,15 @@
 ---
 - hosts: server1
   become: yes
+  vars:
+    # Update this path based playbook/server (shared folder path on the NFS server)
+    - nfs_shared_dir_path: "/volume1/test"
   vars_files:
     - group_vars/all.yml
-    - roles/nfs/vars/main.yml
     - roles/commons/vars/main.yml
     - roles/docker/vars/main.yml
     - roles/gitlab/vars/main.yml
+    - roles/nfs/vars/main.yml
 
   tasks:
     # Order of tasks execution matters

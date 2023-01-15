@@ -1,6 +1,6 @@
 ---
 # vars file for nfs
-nfs_source: "10.10.50.22:/volume1/test"
+nfs_source: "10.10.50.22:{{ nfs_shared_dir_path }}"
 mount_point: "/home/shakir/data"
 permission: "0755"
 file_options: "rw,sync"
