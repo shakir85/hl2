@@ -1,45 +1,54 @@
 ---
-- name: Add Docker GPG key
+- name: Adding Docker GPG key
   apt_key:
     url: https://download.docker.com/linux/debian/gpg
     state: present
 
-- name: Save Debian release version into a variable
+- name: Saving Debian release version into a variable
   shell: "lsb_release -cs"
   register: os_version
 
-- name: Add Docker apt repository
+- name: Adding Docker apt repository
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{ os_version.stdout }} stable"
     state: present
 
-- name: Install Docker
-  apt: 
-    state: present 
-    update_cache: yes 
+- name: Installing Docker
+  apt:
+    state: present
+    update_cache: yes
     force_apt_get: yes
-    name: 
+    name:
       - docker-ce={{ docker_ce_version }}
       - docker-ce-cli={{ docker_ce_cli_version }}
       - containerd.io={{ containerd_version }}
 
-# 'state: present' -> if group exist = pass; otherwise create it. 
-- name: Create Docker Group
+# 'state: present' -> if group exist = pass; otherwise create it.
+- name: Creating Docker Group
   group:
     name: docker
     state: present
 
-- name: Add user '{{ default_user }}' to docker group
+- name: Adding user '{{ default_user }}' to docker group
   user:
     name: "{{ default_user }}"
     groups: "docker"
     append: yes
 
-- name: Ensure docker service is running
-  systemd: 
-    name: docker 
-    state: started 
-    enabled: yes   
+- name: Copying custom daemon.json file
+  ansible.builtin.copy:
+    src: ../files/daemon.json
+    dest: /etc/docker
+    owner: root
+    group: root
+    mode: "0644"
+    force: yes
+
+- name: Ensuring docker service is running
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
 
 - name: Install Docker Compose
   get_url:
