@@ -75,7 +75,7 @@ fi
 #   Append the content of this file to your .bashrc.
 #
 # Hint for customizations:
-#   * You can add any service/deamon you'd like to print its status in the  
+#   * You can add any service/deamon you'd like to print its status in the
 #     login message to the 'serviceStatus' function below.
 #
 # Disclamer:
@@ -134,12 +134,12 @@ function LoggedInUsers () {
     # sort  and  uniq  to remove duplicate users
     # last sed is to trim/prevent printing whitespaces
     TTY_USERS=$(w | awk '(NR>2) { print $1 }' | sort | uniq | sed '/^[[:space:]]*$/d')
-    
+
     # Using echo here to print mutiline stdout in a single line via flags: -n and -e
     # To handle a multi-user log in situation. More than one IP will be sent out to stdout from the 'w' command.
     # ->> awk explanation: skip two headers, print third column, sort, get unique IPs, trim space lines
     TTY_IP=$(echo -n -e "$(w | awk '(NR>2) { print $3 }' | sort | uniq | sed '/^[[:space:]]*$/d')")
-    
+
     echo -e -n "$ColorReset""➜ [$Bold$Dim$ColorReset$Normal$Blue $TTY_USERS$ColorReset$Dim from $Blue$TTY_IP$ColorReset ]"
 }
 
@@ -150,8 +150,8 @@ function serviceStatus () {
     echo -e -n "$ColorReset""➜ [$Bold$Blue $1$ColorReset$Normal $Green ✓$ColorReset$Dim active "
 
         case $IS_UP in
-            "up") echo -e -n "$Green▲$ColorReset$Dim up$Normal$ColorReset ]" ;;
-            "down") echo -e -n "$Red▼$ColorReset$Dim down$ColorReset ]" ;;
+            "running") echo -e -n "$Green▲$ColorReset$Dim up$Normal$ColorReset ]" ;;
+            "dead") echo -e -n "$Red▼$ColorReset$Dim down$ColorReset ]" ;;
             *) echo -e -n "Error loading service" ;;
         esac
 
