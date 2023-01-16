@@ -1,2 +1,0 @@
-server1 ansible_host=10.10.50.174
-server2 ansible_host=10.10.50.175
