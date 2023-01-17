@@ -13,7 +13,7 @@ resource "proxmox_vm_qemu" "vm_resource" {
   # Read this doc, and understand its implications, before enabling full_clone:
   # https://pve.proxmox.com/pve-docs/chapter-qm.html#qm_copy_and_clone
   # When this attribute is set to 'false', Proxmox will do linked clones.
-  # full_clone = false 
+  # full_clone = false
 
   os_type   = "cloud-init"
   clone     = each.value.cloud_init_template
