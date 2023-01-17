@@ -26,7 +26,7 @@
 # TODO: review file permission assignment
 - name: Checking mounting point
   ansible.builtin.file:
-    path: "{{ mount_point }}"
+    path: "{{ default_nfs_mount_point }}"
     state: directory
     mode: "{{ permission }}"
     owner: "{{ default_user }}"
@@ -35,7 +35,7 @@
 - name: Mounting NFS
   ansible.posix.mount:
     src: "{{ nfs_source }}"
-    path: "{{ mount_point }}"
+    path: "{{ default_nfs_mount_point }}"
     fstype: nfs
     opts: "{{ file_options }}"
     state: mounted

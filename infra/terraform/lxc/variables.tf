@@ -1,36 +1,28 @@
-variable "proxmox_api_url" {
-  type = string
+/*  Available values for these variables:
+      container_template = [
+                            ubuntu-20.04-standard_20.04-1_amd64.tar.gz,
+                            centos-7-default_20190926_amd64.tar.xz
+                            ]
+      storage_pool = [local, local-lvm, ssd-r10]
+*/
+variable "proxmox_host" {
+  default = "10.10.50.20"
 }
 
-variable "proxmox_api_token_id" {
-  type = string
+variable "lxc" {
+  default = {
+    "nginx_proxy" = {
+      container_name     = "npm-tftes",
+      hdd_size           = "8G",
+      storage_pool       = "ssd-r10",
+      container_template = "ubuntu-20.04-standard_20.04-1_amd64.tar.gz",
+      ip_address         = "10.10.50.35/24"
+    },
+  }
 }
 
-variable "proxmox_api_token_secret" {
+# Use env var, must export TF_VAR_lxcpwd=<passwordValue>
+variable "lxcpwd" {
   type      = string
   sensitive = true
-}
-
-variable "container_password" {
-  type      = string
-  sensitive = true
-}
-
-variable "container_name" {
-  type = string
-}
-
-variable "disk_size" {
-  type        = string
-  description = "Lxc disk size number + M, K or G quoted [e.g. \"8G\"]"
-}
-
-variable "pxmx_storage" {
-  type        = string
-  description = "Enter storage pool [local, local-lvm, ssd-r10]"
-}
-
-variable "container_template" {
-  type        = string
-  description = "Copy & paste a lxc template: \n\tubuntu-20.04-standard_20.04-1_amd64.tar.gz\n\tcentos-7-default_20190926_amd64.tar.xz"
 }
