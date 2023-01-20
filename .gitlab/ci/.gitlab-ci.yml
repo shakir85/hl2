@@ -1,1 +1,17 @@
-# .disabled
+# /home/gitlab-runner/builds/8ExdLM_2/0/shakir85/homelab
+#
+stages:
+  - test
+
+homeapps-deployment:
+  tags:
+    - citest
+
+  stage: test
+  script:
+    - cd apps/uptime-kuma
+    - docker-compose down --rmi all
+    - cd ../change-detection
+    - docker-compose up -d
+    - cd ../memos
+    - docker-compose up -d

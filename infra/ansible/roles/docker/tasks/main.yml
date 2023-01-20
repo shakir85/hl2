@@ -52,7 +52,6 @@
 
 - name: Install Docker Compose
   get_url:
-    url: https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-aarch64
+    url: https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-x86_64
     dest: /usr/local/bin/docker-compose
-    checksum: sha256:14d31297794868520cb2e61b543bb1c821aaa484af22b397904314ae8227f6a2
     mode: 0755
