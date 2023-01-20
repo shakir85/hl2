@@ -1,10 +1,11 @@
 ---
 # tasks file for gitlab
+# https://gitlab-runner-downloads.s3.amazonaws.com/latest/index.html
 - name: Downloading Gitlab Runner
   get_url:
     url: "{{ gitlab_deb_pkg_url }}"
     dest: /tmp/
-    checksum: sha256:58c84fd199447ba0fb12db333e6251c5deee51d3e201c733a9ba8ec8039f1c33
+    checksum: sha256:295897287ff15d2d82cabfabbb826b1978e900daf01a0fb4032eccf1eb4cce52
     mode: 0755
 
 - name: Installing Gitlab Runner
