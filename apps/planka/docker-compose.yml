@@ -3,6 +3,7 @@ version: '3'
 services:
   planka:
     image: meltyshev/planka:latest
+    container_name: planka
     command: >
       bash -c
         "for i in `seq 1 30`; do
@@ -29,6 +30,7 @@ services:
 
   postgres:
     image: postgres:alpine
+    container_name: planka_postgres
     restart: unless-stopped
     volumes:
       - /data/planka:/var/lib/postgresql/data
