@@ -2,7 +2,7 @@
 stages:
   - deploy
 
-homeapps-deployment:
+.homeapps-deployment:
   tags:
     - galaxy
 
@@ -18,7 +18,7 @@ homeapps-deployment:
     - docker-compose -f apps/uptime-kuma/docker-compose.yml up -d
     - docker-compose -f apps/wikijs/docker-compose.yml up -d
 
-media-server-deployment:
+.media-server-deployment:
   tags:
     - media-server
 
