@@ -71,12 +71,12 @@ variable "vms" {
       default_gateway     = "10.10.50.10",
       cpu_cores           = 2,
       cpu_sockets         = 1,
-      memory              = "1026",
-      hdd_size            = "24G",
+      memory              = "4096",
+      hdd_size            = "40G",
       storage_pool        = "ssd-r10"
       cloud_init_template = "debian11-cloud",
-      vm_description      = "Self hosted Docker registry",
-      tags                = "harbor docker-registry prod debian11"
+      vm_description      = "Artifacts registry",
+      tags                = "harbor prod debian11"
     },
   }
 }
