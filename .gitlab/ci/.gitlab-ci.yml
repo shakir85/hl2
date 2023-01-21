@@ -1,17 +1,19 @@
-# /home/gitlab-runner/builds/8ExdLM_2/0/shakir85/homelab
-#
+---
 stages:
-  - test
+  - deploy
 
 homeapps-deployment:
   tags:
-    - citest
+    - galaxy
 
-  stage: test
+  stage: deploy
+
   script:
-    - cd apps/uptime-kuma
-    - docker-compose down --rmi all
-    - cd ../change-detection
-    - docker-compose up -d
-    - cd ../memos
-    - docker-compose up -d
+    - docker-compose -f apps/calibre/docker-compose.yml up -d
+    - docker-compose -f apps/calibre-web/docker-compose.yml up -d
+    - docker-compose -f apps/change-detection/docker-compose.yml up -d
+    - docker-compose -f apps/flame/docker-compose.yml up -d
+    - docker-compose -f apps/memos/docker-compose.yml up -d
+    - docker-compose -f apps/planka/docker-compose.yml up -d
+    - docker-compose -f apps/uptime-kuma/docker-compose.yml up -d
+    - docker-compose -f apps/wikijs/docker-compose.yml up -d

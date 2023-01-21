@@ -6,10 +6,10 @@ volumes:
   uptime-kuma:
 services:
   uptime-kuma:
-    image: louislam/uptime-kuma:1
+    image: louislam/uptime-kuma:${TAG}
     container_name: uptime-kuma
     volumes:
-      - /data/planka/uptime-kuma:/app/data
+      - /data/uptime-kuma:/app/data
     ports:
       - 3543:3001
     restart: unless-stopped

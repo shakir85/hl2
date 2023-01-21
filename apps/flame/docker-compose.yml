@@ -1,11 +1,8 @@
 version: '3.6'
 
-volumes:
-  flame:
-
 services:
   flame:
-    image: pawelmalak/flame
+    image: pawelmalak/flame:${TAG}
     container_name: flame
     volumes:
       - /data/flame:/app/data
