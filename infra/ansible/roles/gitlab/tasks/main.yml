@@ -5,7 +5,6 @@
   get_url:
     url: "{{ gitlab_deb_pkg_url }}"
     dest: /tmp/
-    checksum: sha256:295897287ff15d2d82cabfabbb826b1978e900daf01a0fb4032eccf1eb4cce52
     mode: 0755
 
 - name: Installing Gitlab Runner
@@ -23,7 +22,7 @@
     groups: docker
     append: yes
 
-- name: Ensure gitlab-runner is running
+- name: Ensuring gitlab-runner is running
   systemd:
     name: gitlab-runner
     state: started

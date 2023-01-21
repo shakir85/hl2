@@ -1,0 +1,3 @@
+---
+# vars file for vpn
+mullvad_deb_pkg_url: https://mullvad.net/download/app/deb/latest

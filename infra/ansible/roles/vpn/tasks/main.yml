@@ -1,0 +1,5 @@
+---
+# tasks file for vpn
+- name: Installing vpn client
+  apt:
+    deb: "{{ mullvad_deb_pkg_url }}"
