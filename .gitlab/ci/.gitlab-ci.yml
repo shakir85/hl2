@@ -17,3 +17,13 @@ homeapps-deployment:
     - docker-compose -f apps/planka/docker-compose.yml up -d
     - docker-compose -f apps/uptime-kuma/docker-compose.yml up -d
     - docker-compose -f apps/wikijs/docker-compose.yml up -d
+
+media-server-deployment:
+  tags:
+    - media-server
+
+  stage: deploy
+
+  script:
+    - docker-compose -f apps/plex/docker-compose.yml up -d
+    - docker-compose -f apps/jellyfin/docker-compose.yml up -d
