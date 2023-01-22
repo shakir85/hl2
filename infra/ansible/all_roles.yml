@@ -6,6 +6,7 @@
     - roles/commons/vars/main.yml
     - roles/docker/vars/main.yml
     - roles/gitlab/vars/main.yml
+    - roles/harbor/vars/main.yml
 
   tasks:
     # Order of tasks execution matters
@@ -17,6 +18,8 @@
         file: roles/gitlab/tasks/main.yml
     - ansible.builtin.include_tasks:
         file: roles/gitlab/tasks/register_runner.yml
+    - ansible.builtin.include_tasks:
+        file: roles/harbor/tasks/main.yml
 
     - name: Rebooting...
       shell: "sleep 5 && reboot"
