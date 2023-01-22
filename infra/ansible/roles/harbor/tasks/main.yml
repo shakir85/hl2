@@ -1,0 +1,64 @@
+---
+# tasks file for harbor
+- name: Delete Harbor installation directory if present
+  ansible.builtin.file:
+    state: absent
+    path: /harbor
+
+- name: Modify Docker daemon settings
+  shell:
+    cmd: |
+      tee /etc/docker/daemon.json >/dev/null <<EOF
+      {
+          "exec-opts": ["native.cgroupdriver=systemd"],
+          "insecure-registries" : ["{{ default_harbor_ip }}:443","{{ default_harbor_ip }}:80","0.0.0.0/0"],
+          "log-driver": "journald"
+      }
+      EOF
+
+- name: Restarting Docker service to pick up changes
+  systemd:
+    name: docker
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+
+- name: Download Harbor tar file
+  get_url:
+    url: https://github.com/goharbor/harbor/releases/download/v2.7.0/harbor-online-installer-v2.7.0.tgz
+    dest: /harbor-online-installer-v2.7.0.tgz
+    mode: 0755
+
+- name: Extract .tgz file into the /harbor
+  ansible.builtin.unarchive:
+    src: /harbor-online-installer-v2.7.0.tgz
+    dest: /
+    remote_src: yes
+
+- name: Delete Harbor's default config & tar files
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /harbor/harbor.yml
+    - /harbor-online-installer-v2.7.0.tgz
+
+- name: Copy custom Harbor config file
+  ansible.builtin.copy:
+    src: ../files/harbor.template.yml
+    dest: /harbor/harbor.yml
+    force: yes
+
+# Available Harbor plugins args:
+# --with-trivy
+# --with-chartmuseum (soon to be depricated)
+# --with-notary (must enable ssl in Harbor config)
+- name: Run Harbor installer script
+  command: /harbor/install.sh --with-trivy
+
+- name: Print login info
+  debug:
+    msg:
+      - "Harbor Installation Complete"
+      - "Login to Harbor instance: http://{{ default_harbor_ip }}:80"
+      - "Login to Docker registry: docker login -u admin -p Harbor12345 {{ default_harbor_ip }}"

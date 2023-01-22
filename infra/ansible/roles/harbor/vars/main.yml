@@ -1,0 +1,3 @@
+---
+# This is a static ip configured via Terraform
+default_harbor_ip: 10.10.50.34
