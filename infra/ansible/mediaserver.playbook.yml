@@ -1,12 +1,14 @@
 ---
-- hosts: all
+- hosts: mediaserver
   become: yes
   vars_files:
     - group_vars/all.yml
     - roles/commons/vars/main.yml
     - roles/docker/vars/main.yml
     - roles/gitlab/vars/main.yml
-    - roles/harbor/vars/main.yml
+
+  vars:
+    - nfs_source: "10.10.50.22:/volume1/plex"
 
   tasks:
     # Order of tasks execution matters
@@ -18,8 +20,6 @@
         file: roles/gitlab/tasks/main.yml
     - ansible.builtin.include_tasks:
         file: roles/nfs/tasks/main.yml
-    - ansible.builtin.include_tasks:
-        file: roles/harbor/tasks/main.yml
 
     - name: Rebooting...
       shell: "sleep 5 && reboot"
