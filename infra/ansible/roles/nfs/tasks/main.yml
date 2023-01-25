@@ -17,25 +17,51 @@
       - nfs-utils
     state: present
 
+# The following task is a fix to a 'possibly' bug in starting NFS service with systemd.
+# In a new nfs-common package installation on Debian11, the service's path below was
+# a symbolic link to /dev/null, which makes systemd mask the NFS service
+# Resulting in a dead service that systemd can't unmask at all. Removing
+# this symlink and relading the service fixes the issue.
+# The weirdest thing is the error message that the 'mount' command was throwing
+# a misleading and unrelated to this issue:
+# >> Error mgs: mount: 10.10.50.22:/volume1/test /data: can't find in /etc/fstab.
+# Note: neither the 'masked: false' Ansible directive nor 'command: systemctl unmask ..' worked.
+- name: Remove null service file to unmask the service
+  ansible.builtin.file:
+    path: /lib/systemd/system/nfs-common.service
+    state: absent
+
+- name: Force systemd daemon to reread systemd-units configs
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
 - name: Ensure NFS client service is running
   systemd:
-    name: nfs-client.target
+    name: "{{ item }}"
     state: started
     enabled: yes
+  loop:
+    - nfs-common
+    - nfs-client.target
 
 # TODO: review file permission assignment
 - name: Checking mounting point
   ansible.builtin.file:
     path: "{{ default_nfs_mount_point }}"
     state: directory
-    mode: "{{ permission }}"
     owner: "{{ default_user }}"
     group: "{{ default_user }}"
+
+- name: Check variables
+  debug:
+    msg:
+      - NFS source => {{ nfs_source }}
+      - NFS mount point => {{ default_nfs_mount_point }}
 
 - name: Mounting NFS
   ansible.posix.mount:
     src: "{{ nfs_source }}"
-    path: "{{ default_nfs_mount_point }}"
+    path: "/data"
     fstype: nfs
-    opts: "{{ file_options }}"
+    opts: "rw,sync"
     state: mounted

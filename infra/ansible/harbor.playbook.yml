@@ -1,12 +1,14 @@
 ---
-- hosts: all
+- hosts: harbor
   become: yes
   vars_files:
     - group_vars/all.yml
     - roles/commons/vars/main.yml
     - roles/docker/vars/main.yml
-    - roles/gitlab/vars/main.yml
     - roles/harbor/vars/main.yml
+
+  vars:
+    - nfs_source: "10.10.50.22:/volume1/harbor"
 
   tasks:
     # Order of tasks execution matters
@@ -14,8 +16,6 @@
         file: roles/commons/tasks/main.yml
     - ansible.builtin.include_tasks:
         file: roles/docker/tasks/main.yml
-    - ansible.builtin.include_tasks:
-        file: roles/gitlab/tasks/main.yml
     - ansible.builtin.include_tasks:
         file: roles/nfs/tasks/main.yml
     - ansible.builtin.include_tasks:

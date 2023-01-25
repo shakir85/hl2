@@ -1,13 +1,13 @@
 ---
 # -----------------
 # IMPORTANT:
-# See this Gitlab deprications:
+# See these Gitlab deprications:
 # - registration-tokens & gitlab-runner register command:
 #     https://gitlab.com/gitlab-org/gitlab/-/issues/380872
 # -----------------
 
 - name: Registering Gitlab Runner (system-mode)
-  when: reg_tk | default('', true) | trim != ''
+  when: registration_token | default('', true) | trim != ''
   register: create
   loop: "{{ list_of_runners }}"
   # --tag-list -> comma separated tags
@@ -19,10 +19,11 @@
     --locked="false" \
     --access-level="not_protected" \
     --url "https://gitlab.com" \
-    --registration-token "{{ reg_tk }}" \
+    --registration-token "{{ registration_token }}" \
     --executor shell \
     --tag-list="{{ inventory_hostname }}" \
 
+# Print this message if the gitlab-ci registration token was not exported as env var
 - name: print msg
   when: create.changed == false
   debug:
