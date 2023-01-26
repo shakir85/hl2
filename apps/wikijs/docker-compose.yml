@@ -9,8 +9,8 @@ services:
       - PGID=1000
       - TZ=America/Los_Angeles
     volumes:
-      - /data/wikijs/config:/config
-      - /data/wikijs/appdata:/data
+      - /galaxy/data/wikijs/config:/config
+      - /galaxy/data/wikijs/appdata:/data
     ports:
       - 3890:3000
     restart: unless-stopped

@@ -10,8 +10,8 @@ services:
       - DOCKER_MODS=linuxserver/calibre-web:calibre
       - OAUTHLIB_RELAX_TOKEN_SCOPE=1
     volumes:
-      - /data/calibre-web:/config
-      - /data/calibre:/books
+      - /galaxy/data/calibre-web:/config
+      - /galaxy/data/calibre:/books
     ports:
       - 4463:8083
     restart: unless-stopped

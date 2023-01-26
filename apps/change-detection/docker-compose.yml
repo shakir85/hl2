@@ -10,7 +10,7 @@ services:
       - TZ=America/Los_Angeles
       - BASE_URL=https://change.shakir.cloud
     volumes:
-      - /data/changedetection:/config
+      - /galaxy/data/changedetection:/config
     ports:
       - 5900:5000
     restart: unless-stopped

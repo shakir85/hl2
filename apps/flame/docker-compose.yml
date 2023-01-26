@@ -5,9 +5,9 @@ services:
     image: pawelmalak/flame:${TAG}
     container_name: flame
     volumes:
-      - /data/flame:/app/data
+      - /galaxy/data/flame:/app/data
     ports:
       - 5005:5005
     environment:
-      - PASSWORD=shakir
+      - PASSWORD=${PWD}
     restart: unless-stopped

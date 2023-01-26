@@ -8,7 +8,7 @@ services:
       - PGID=1000
       - TZ=America/Los_Angeles
     volumes:
-      - /data/calibre/:/config
+      - /galaxy/data/calibre/:/config
     ports:
       - 4462:8080
       - 4461:8081

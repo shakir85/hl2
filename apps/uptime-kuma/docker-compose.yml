@@ -9,7 +9,7 @@ services:
     image: louislam/uptime-kuma:${TAG}
     container_name: uptime-kuma
     volumes:
-      - /data/uptime-kuma:/app/data
+      - /galaxy/data/uptime-kuma:/app/data
     ports:
       - 3543:3001
     restart: unless-stopped
