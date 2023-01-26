@@ -3,4 +3,4 @@
 # The user will be activated when Terraform provisions a VM using that
 # cloud-init template.
 default_user: shakir
-default_nfs_mount_point: "/data"
+default_nfs_mount_point: "/{{ inventory_hostname }}/data"

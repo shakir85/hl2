@@ -61,7 +61,7 @@
 - name: Mounting NFS
   ansible.posix.mount:
     src: "{{ nfs_source }}"
-    path: "/data"
+    path: "{{ default_nfs_mount_point }}"
     fstype: nfs
     opts: "rw,sync"
     state: mounted
