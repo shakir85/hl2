@@ -8,7 +8,7 @@
     - roles/gitlab/vars/main.yml
 
   vars:
-    - nfs_source: "10.10.50.22:/volume1/plex"
+    - nfs_source: "10.10.50.22:/volume1/media"
 
   tasks:
     # Order of tasks execution matters
