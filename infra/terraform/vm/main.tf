@@ -45,11 +45,13 @@ resource "proxmox_vm_qemu" "vm_resource" {
       network,
     ]
   }
+
+  provisioner "local-exec" {
+    connection {
+      host = each.value.ip_address
+      type = "ssh"
+      user = "root"
+    }
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ${var.inventory_path} ${each.value.ansible_command}"
+  }
 }
-
-# Print DHCP assigned IP on completion
-# output "dhcp_ip" {
-#   # value = proxmox_vm_qemu.vm_resource.default_ipv4_address
-#   value = proxmox_vm_qemu.vm_resource[each.key].default_ipv4_address
-# }
-

@@ -1,8 +1,21 @@
 ---
-- name: Common Packages & Configs
-  apt: 
-    name: "{{ packages }}"
+- name: Update APT Cache
+  apt:
     update_cache: yes
+    force_apt_get: yes
+
+# This is an aggressive solution for APT lock issue
+# - name: Remove apt lock file
+#   file:
+#     state: absent
+#     path: "/var/lib/dpkg/lock-frontend "
+
+- name: Wait for APT Lock
+  shell: while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+
+- name: Common Packages & Configs
+  apt:
+    name: "{{ packages }}"
     state: latest
     force_apt_get: yes
 
@@ -15,5 +28,5 @@
     dest: /home/{{ default_user }}/
     owner: "{{ default_user }}"
     group: "{{ default_user }}"
-    mode: '0644'
+    mode: "0644"
     # force: yes

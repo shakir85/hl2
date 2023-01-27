@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "pxmx-hm-tf-state"
-    key    = "pxmx-tf-state-lxc"
+    key    = "lxcs-tf-statefile"
     region = "us-east-1"
   }
 

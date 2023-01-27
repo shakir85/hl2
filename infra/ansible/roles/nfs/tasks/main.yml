@@ -1,5 +1,10 @@
 ---
 # tasks file for nfs
+# Will mount two NFS points:
+# .
+# └── /<hostname>/
+#     ├── data/
+#     └── config/
 
 - name: Install NFS utils for Debian servers
   when: ansible_os_family == 'Debian'
@@ -47,21 +52,27 @@
 # TODO: review file permission assignment
 - name: Checking mounting point
   ansible.builtin.file:
-    path: "{{ default_nfs_mount_point }}"
+    path: "/{{ inventory_hostname }}/{{ item }}"
     state: directory
     owner: "{{ default_user }}"
     group: "{{ default_user }}"
+    recurse: yes
+  loop:
+    - config
+    - data
 
 - name: Check variables
   debug:
     msg:
       - NFS source => {{ nfs_source }}
-      - NFS mount point => {{ default_nfs_mount_point }}
 
 - name: Mounting NFS
   ansible.posix.mount:
-    src: "{{ nfs_source }}"
-    path: "{{ default_nfs_mount_point }}"
+    src: "{{ nfs_source }}/{{ item }}"
+    path: "/{{ inventory_hostname }}/{{ item }}"
     fstype: nfs
     opts: "rw,sync"
     state: mounted
+  loop:
+    - config
+    - data

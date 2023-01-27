@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "pxmx-hm-tf-state"
-    key    = "pxmx-tf-state-vms"
+    key    = "vms-tf-statefile"
     region = "us-east-1"
   }
 
@@ -21,7 +21,7 @@ provider "proxmox" {
   pm_api_url      = "https://${var.proxmox_host}:8006/api2/json"
   pm_tls_insecure = true
 
-  # Enable the following attributes for debugging: 
+  # Enable the following attributes for debugging:
   # pm_debug = true
   # pm_log_file = "terraform-plugin-proxmox.log"
   # pm_log_enable = true

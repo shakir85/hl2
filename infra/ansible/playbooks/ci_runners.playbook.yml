@@ -10,9 +10,9 @@
       private: false
 
   vars_files:
-    - group_vars/all.yml
-    - roles/gitlab/vars/main.yml
+    - ../group_vars/all.yml
+    - ../roles/gitlab/vars/main.yml
 
   tasks:
     - ansible.builtin.include_tasks:
-        file: roles/gitlab/tasks/register_runner.yml
+        file: ../roles/gitlab/tasks/register_runner.yml
