@@ -7,6 +7,8 @@ homeapps:
     - galaxy
 
   stage: deploy
+  before_script:
+    - su shakir
 
   script:
     - docker-compose -f apps/calibre/docker-compose.yml up -d
