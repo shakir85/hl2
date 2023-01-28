@@ -8,7 +8,7 @@
     - ../roles/gitlab/vars/main.yml
 
   vars:
-    - nfs_source: "10.10.50.22:/volume1/media"
+    - nfs_source: "10.10.50.22:/volume1/mediaserver"
 
   tasks:
     # Order of tasks execution matters
