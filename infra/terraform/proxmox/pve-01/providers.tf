@@ -17,8 +17,7 @@ provider "proxmox" {
   // Export the following environment variables to authenticate with proxmox:
   # export PM_API_TOKEN_ID="<username>@pam!<tokenName>"
   # export PM_API_TOKEN_SECRET="xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
-
-  pm_api_url      = "https://${var.proxmox_host}:8006/api2/json"
+  pm_api_url      = "https://10.10.50.20:8006/api2/json"
   pm_tls_insecure = true
 
   # Enable the following attributes for debugging:
