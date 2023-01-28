@@ -17,7 +17,7 @@ homeapps:
     - docker-compose -f apps/calibre-web/docker-compose.yml up -d
     - docker-compose -f apps/change-detection/docker-compose.yml up -d
     - docker-compose -f apps/flame/docker-compose.yml up -d
-    # - docker-compose -f apps/memos/docker-compose.yml up -d
+    - docker-compose -f apps/memos/docker-compose.yml up -d
     - docker-compose -f apps/planka/docker-compose.yml up -d
     - docker-compose -f apps/uptime-kuma/docker-compose.yml up -d
     - docker-compose -f apps/wikijs/docker-compose.yml up -d
