@@ -2,7 +2,7 @@
 stages:
   - deploy
 
-homeapps-deployment:
+homeapps:
   tags:
     - galaxy
 
@@ -21,7 +21,7 @@ homeapps-deployment:
 
   when: manual
 
-media-server-deployment:
+mediaserver:
   tags:
     - mediaserver
 
