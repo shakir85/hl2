@@ -8,7 +8,7 @@ homeapps:
 
   stage: deploy
   before_script:
-    - su -P shakir
+    - su shakir
 
   script:
     - whoami
