@@ -18,6 +18,7 @@ services:
       - 32414:32414/udp
     environment:
       - TZ=America/LOS_ANGELES
+      # Get a token from https://www.plex.tv/claim/ and export CLAIMTOKEN=<tokenValue>
       - PLEX_CLAIM=${CLAIMTOKEN}
       - ADVERTISE_IP=http://${HOSTIP}:32400/
     hostname: plex.shakir.cloud
