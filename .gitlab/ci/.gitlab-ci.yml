@@ -1,8 +1,8 @@
 ---
-.stages:
+stages:
   - deploy
 
-.homeapps-deployment:
+homeapps-deployment:
   tags:
     - galaxy
 
@@ -18,11 +18,18 @@
     - docker-compose -f apps/uptime-kuma/docker-compose.yml up -d
     - docker-compose -f apps/wikijs/docker-compose.yml up -d
 
-.media-server-deployment:
+  when: manual
+
+media-server-deployment:
   tags:
-    - media-server
+    - mediaserver
 
   stage: deploy
 
   script:
+    # test if claim is successful:
+    # curl http://localhost:32400/identity
+    - pwd
     - docker-compose -f apps/plex/docker-compose.yml up -d
+
+  when: manual
