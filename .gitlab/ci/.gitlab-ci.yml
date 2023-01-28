@@ -17,6 +17,7 @@ homeapps-deployment:
     - docker-compose -f apps/planka/docker-compose.yml up -d
     - docker-compose -f apps/uptime-kuma/docker-compose.yml up -d
     - docker-compose -f apps/wikijs/docker-compose.yml up -d
+    - docker run -d -p 4567:4567 -v /galaxy/data/gollum/wiki:/wiki gollumwiki/gollum:v5.3.0
 
   when: manual
 
