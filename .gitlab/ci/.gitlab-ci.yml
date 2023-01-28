@@ -7,12 +7,8 @@ homeapps:
     - galaxy
 
   stage: deploy
-  before_script:
-    - su shakir
 
   script:
-    - whoami
-    - pwd
     - docker-compose -f apps/calibre/docker-compose.yml up -d
     - docker-compose -f apps/calibre-web/docker-compose.yml up -d
     - docker-compose -f apps/change-detection/docker-compose.yml up -d
