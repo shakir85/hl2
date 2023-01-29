@@ -9,5 +9,5 @@ services:
     ports:
       - 5005:5005
     environment:
-      - PASSWORD=${PWD}
+      - PASSWORD=${PASSWORD}
     restart: unless-stopped
