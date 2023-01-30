@@ -17,7 +17,7 @@ services:
       - 32413:32413/udp
       - 32414:32414/udp
     environment:
-      - TZ=America/LOS_ANGELES
+      - TZ=${TIMEZONE}
       # Get a token from https://www.plex.tv/claim/ and export CLAIMTOKEN=<tokenValue>
       - PLEX_CLAIM=${CLAIMTOKEN}
       - ADVERTISE_IP=http://${HOSTIP}:32400/
